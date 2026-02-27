@@ -24,6 +24,8 @@ jupyter notebook notebooks/
 | <img src="assets/swarm.png" width="200"/> | [Swarm Motion Planning](notebooks/swarm_planning.ipynb) | 100 agents swap positions on a circle without collisions. SCP with batched GPU solves — each round is one `CompiledSolver` call. | `CompiledSolver` `batched` `GPU` `QP` `SCP` |
 | <img src="assets/predict_then_optimize.png" width="200"/> | [Predict, then Optimize](notebooks/predict_then_optimize.ipynb) | Shortest path routing on a 20×20 grid with learned edge costs. End-to-end training through a differentiable LP layer achieves lower regret than two-stage. | `cvxpylayers` `batched` `differentiable` `GPU` `PyTorch` `animation` |
 | <img src="assets/sudoku.png" width="200"/> | [Sudoku](notebooks/sudoku.ipynb) | Sudoku via LP relaxation — 729 variables, exact integer solution from convex relaxation. 256 puzzles solved simultaneously. | `CompiledSolver` `batched` `LP` `GPU` |
+| <img src="assets/sensor_placement.png" width="200"/> | [Sensor Placement](notebooks/sensor_placement.ipynb) | Bilevel SOCP: learn optimal sensor positions by differentiating through a localization solver. First SOC constraints in the gallery, GDOP-aware geometry optimization. | `cvxpylayers` `batched` `differentiable` `GPU` `SOC` `animation` |
+| <img src="assets/bandwidth_allocation.png" width="200"/> | [Fair Bandwidth Allocation](notebooks/bandwidth_allocation.ipynb) | Alpha-fairness via power cones: sweep the fairness-throughput tradeoff, then learn optimal link capacities by differentiating through the fair allocation solver. | `cvxpylayers` `differentiable` `GPU` `power-cones` `animation` |
 
 ## Feature Matrix
 
@@ -36,6 +38,8 @@ jupyter notebook notebooks/
 | Swarm Planning | `CompiledSolver` | :white_check_mark: | | | :white_check_mark: | zero, nonneg |
 | Predict, then Optimize | `cvxpylayers` | :white_check_mark: | :white_check_mark: | | :white_check_mark: | zero, nonneg |
 | Sudoku | `CompiledSolver` | :white_check_mark: | | | :white_check_mark: | zero, nonneg |
+| Sensor Placement | `cvxpylayers` | :white_check_mark: | :white_check_mark: | | :white_check_mark: | zero, nonneg, SOC |
+| Bandwidth Allocation | `cvxpylayers` | | :white_check_mark: | | :white_check_mark: | zero, nonneg, power |
 
 ## Project Structure
 
@@ -55,7 +59,9 @@ moreau-examples/
 │   ├── optimal_transport.ipynb
 │   ├── swarm_planning.ipynb
 │   ├── predict_then_optimize.ipynb
-│   └── sudoku.ipynb
+│   ├── sudoku.ipynb
+│   ├── sensor_placement.ipynb
+│   └── bandwidth_allocation.ipynb
 └── scripts/
     └── render_notebooks.py    # Execute all notebooks + extract thumbnails
 ```

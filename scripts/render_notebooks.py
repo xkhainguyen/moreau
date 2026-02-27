@@ -16,6 +16,8 @@ NOTEBOOKS = [
     "swarm_planning.ipynb",
     "predict_then_optimize.ipynb",
     "sudoku.ipynb",
+    "sensor_placement.ipynb",
+    "bandwidth_allocation.ipynb",
 ]
 
 
