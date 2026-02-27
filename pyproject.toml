@@ -1,0 +1,20 @@
+[project]
+name = "moreau-examples"
+version = "0.1.0"
+description = "Visual showcase of Moreau's GPU-accelerated differentiable convex optimization"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "seaborn",
+    "jupyter",
+    "torch",
+    "Pillow",
+    "cvxpy",
+    "cvxpylayers",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.backends._legacy:_Backend"
