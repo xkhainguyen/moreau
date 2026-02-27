@@ -23,7 +23,7 @@ jupyter notebook notebooks/
 | <img src="assets/optimal_transport.png" width="200"/> | [Schrödinger Bridges](notebooks/optimal_transport.ipynb) | Entropy-regularized optimal transport as a Schrödinger bridge. Batched sweep of 64 mass-conservation penalties via cvxpylayers. | `cvxpylayers` `batched` `exp-cones` `animation` |
 | <img src="assets/swarm.png" width="200"/> | [Swarm Motion Planning](notebooks/swarm_planning.ipynb) | 100 agents swap positions on a circle without collisions. SCP with batched GPU solves — each round is one `CompiledSolver` call. | `CompiledSolver` `batched` `GPU` `QP` `SCP` |
 | <img src="assets/predict_then_optimize.png" width="200"/> | [Predict, then Optimize](notebooks/predict_then_optimize.ipynb) | Shortest path routing on a 20×20 grid with learned edge costs. End-to-end training through a differentiable LP layer achieves lower regret than two-stage. | `cvxpylayers` `batched` `differentiable` `GPU` `PyTorch` `animation` |
-| <img src="assets/sudoku.png" width="200"/> | [Sudoku](notebooks/sudoku.ipynb) | Sudoku via LP relaxation — 729 variables, exact integer solution from convex relaxation. 16 puzzles solved simultaneously. | `CompiledSolver` `batched` `LP` |
+| <img src="assets/sudoku.png" width="200"/> | [Sudoku](notebooks/sudoku.ipynb) | Sudoku via LP relaxation — 729 variables, exact integer solution from convex relaxation. 256 puzzles solved simultaneously. | `CompiledSolver` `batched` `LP` `GPU` |
 
 ## Feature Matrix
 
@@ -32,10 +32,10 @@ jupyter notebook notebooks/
 | Portfolio | `CompiledSolver` `moreau.torch` | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | zero, nonneg |
 | MPC | `CompiledSolver` | :white_check_mark: | | :white_check_mark: | :white_check_mark: | zero, nonneg |
 | Compressed Sensing | `CVXPY` | | | | | zero, nonneg |
-| Schrödinger Bridges | `cvxpylayers` | :white_check_mark: | | | | zero, nonneg, exp |
+| Schrödinger Bridges | `cvxpylayers` | :white_check_mark: | :white_check_mark: | | | zero, nonneg, exp |
 | Swarm Planning | `CompiledSolver` | :white_check_mark: | | | :white_check_mark: | zero, nonneg |
 | Predict, then Optimize | `cvxpylayers` | :white_check_mark: | :white_check_mark: | | :white_check_mark: | zero, nonneg |
-| Sudoku | `CompiledSolver` | :white_check_mark: | | | | zero, nonneg |
+| Sudoku | `CompiledSolver` | :white_check_mark: | | | :white_check_mark: | zero, nonneg |
 
 ## Project Structure
 
