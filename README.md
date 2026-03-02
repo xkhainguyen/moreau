@@ -26,6 +26,7 @@ jupyter notebook notebooks/
 | <img src="assets/sudoku.png" width="200"/> | [Sudoku](notebooks/sudoku.ipynb) | Sudoku via LP relaxation — 729 variables, exact integer solution from convex relaxation. 256 puzzles solved simultaneously. | `CompiledSolver` `batched` `LP` `GPU` |
 | <img src="assets/contact_friction.png" width="200"/> | [Differentiable Contact](notebooks/contact_friction.ipynb) | Learn friction from observed motion: Coulomb friction cones (SOC3), chain of differentiable contact solves. Shows why smoothed contact (MuJoCo-style) fails where `moreau.torch` succeeds. | `moreau.torch` `differentiable` `SOC` |
 | <img src="assets/bandwidth_allocation.png" width="200"/> | [Fair Bandwidth Allocation](notebooks/bandwidth_allocation.ipynb) | Alpha-fairness via power cones: sweep the fairness-throughput tradeoff, then learn optimal link capacities by differentiating through the fair allocation solver. | `cvxpylayers` `differentiable` `GPU` `power-cones` `animation` |
+| <img src="assets/sparsemax_attention.png" width="200"/> | [Sparsemax Attention](notebooks/sparsemax_attention.ipynb) | Sparse attention via simplex projection QP. Train softmax, swap to sparsemax for exact-zero attention weights, fine-tune end-to-end through `cvxpylayers`. | `CVXPY` `cvxpylayers` `differentiable` `PyTorch` |
 
 ## Feature Matrix
 
@@ -40,6 +41,7 @@ jupyter notebook notebooks/
 | Sudoku | `CompiledSolver` | :white_check_mark: | | | :white_check_mark: | zero, nonneg |
 | Contact Friction | `moreau.torch` | | :white_check_mark: | | | SOC |
 | Bandwidth Allocation | `cvxpylayers` | | :white_check_mark: | | :white_check_mark: | zero, nonneg, power |
+| Sparsemax Attention | `CVXPY` `cvxpylayers` | | :white_check_mark: | | | zero, nonneg |
 
 ## Project Structure
 
@@ -61,7 +63,8 @@ moreau-examples/
 │   ├── predict_then_optimize.ipynb
 │   ├── sudoku.ipynb
 │   ├── contact_friction.ipynb
-│   └── bandwidth_allocation.ipynb
+│   ├── bandwidth_allocation.ipynb
+│   └── sparsemax_attention.ipynb
 └── scripts/
     └── render_notebooks.py    # Execute all notebooks + extract thumbnails
 ```
