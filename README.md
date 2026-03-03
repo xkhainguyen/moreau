@@ -27,6 +27,7 @@ jupyter notebook notebooks/
 | <img src="assets/contact_friction.png" width="200"/> | [Differentiable Contact](notebooks/contact_friction.ipynb) | Learn friction from observed motion: Coulomb friction cones (SOC3), chain of differentiable contact solves. Shows why smoothed contact (MuJoCo-style) fails where `moreau.torch` succeeds. | `moreau.torch` `differentiable` `SOC` |
 | <img src="assets/bandwidth_allocation.png" width="200"/> | [Fair Bandwidth Allocation](notebooks/bandwidth_allocation.ipynb) | Alpha-fairness via power cones: sweep the fairness-throughput tradeoff, then learn optimal link capacities by differentiating through the fair allocation solver. | `cvxpylayers` `differentiable` `GPU` `power-cones` `animation` |
 | <img src="assets/sparsemax_attention.png" width="200"/> | [Sparsemax Attention](notebooks/sparsemax_attention.ipynb) | Sparse attention via simplex projection QP. Train softmax, swap to sparsemax for exact-zero attention weights, fine-tune end-to-end through `cvxpylayers`. | `CVXPY` `cvxpylayers` `differentiable` `PyTorch` |
+| <img src="assets/safety_filter.png" width="200"/> | [BarrierNet Safety Filter](notebooks/safety_filter.ipynb) | BarrierNet: neural net + differentiable CBF-QP safety layer, trained end-to-end through Moreau. Guaranteed safe on unseen obstacle configurations where a plain neural network crashes. | `cvxpylayers` `differentiable` `GPU` `PyTorch` `QP` |
 
 ## Feature Matrix
 
@@ -42,6 +43,7 @@ jupyter notebook notebooks/
 | Contact Friction | `moreau.torch` | | :white_check_mark: | | | SOC |
 | Bandwidth Allocation | `cvxpylayers` | | :white_check_mark: | | :white_check_mark: | zero, nonneg, power |
 | Sparsemax Attention | `CVXPY` `cvxpylayers` | | :white_check_mark: | | | zero, nonneg |
+| Safety Filter | `cvxpylayers` | | :white_check_mark: | | :white_check_mark: | nonneg |
 
 ## Project Structure
 
@@ -64,7 +66,8 @@ moreau-examples/
 │   ├── sudoku.ipynb
 │   ├── contact_friction.ipynb
 │   ├── bandwidth_allocation.ipynb
-│   └── sparsemax_attention.ipynb
+│   ├── sparsemax_attention.ipynb
+│   └── safety_filter.ipynb
 └── scripts/
     └── render_notebooks.py    # Execute all notebooks + extract thumbnails
 ```
