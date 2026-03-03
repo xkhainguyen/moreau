@@ -18,6 +18,8 @@ NOTEBOOKS = [
     "sudoku.ipynb",
     "contact_friction.ipynb",
     "bandwidth_allocation.ipynb",
+    "sparsemax_attention.ipynb",
+    "safety_filter.ipynb",
 ]
 
 
