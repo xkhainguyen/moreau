@@ -290,10 +290,8 @@ torch_solver = TorchSolver(
         ipm_settings=moreau.IPMSettings(direct_solve_method='qdldl'),
     ),
 )
-torch_solver.setup(
-    torch.tensor(P_vals, dtype=torch.float64),
-    torch.tensor(A_vals, dtype=torch.float64),
-)
+P_vals_t = torch.tensor(P_vals, dtype=torch.float64)
+A_vals_t = torch.tensor(A_vals, dtype=torch.float64)
 
 
 def simulate_moreau(mu_param, v_inits_t, T_sim):
@@ -311,7 +309,7 @@ def simulate_moreau(mu_param, v_inits_t, T_sim):
         forces = []
         for i in range(n):
             q_i = h * v_free[i]
-            sol_i = torch_solver.solve(q_i, b)
+            sol_i = torch_solver.solve(P_vals_t, A_vals_t, q_i, b)
             forces.append(sol_i.x)
         f = torch.stack(forces)
 
