@@ -218,7 +218,23 @@ This is differentiable everywhere, but the physics is **wrong**: friction vanish
 **`moreau.torch`** takes a different approach: solve the **exact** SOCP at each timestep, then differentiate via implicit differentiation of the KKT conditions. No smoothing, no approximation. The physics is correct, the gradients are correct, and the optimizer recovers the true $\mu$.
 """))
 
-# Cell 5: Data + simulators
+# Cell 5: Gradient flow diagram
+cells.append(md_cell('cell-05-gradient-flow', r"""
+## Gradient Flow Through Contact
+
+**Forward:**
+$$\mu \;\xrightarrow{\text{solve contact SOCP at each timestep}}\; \hat{x}_{0:T}(\mu) \;\rightarrow\; \mathcal{L} = \|\hat{x}_{0:T} - x^{\mathrm{obs}}_{0:T}\|^2$$
+
+**Backward:**
+$$\frac{\partial \mathcal{L}}{\partial \mu}
+= \frac{\partial \mathcal{L}}{\partial \hat{x}_{0:T}}
+\cdot
+\frac{\partial \hat{x}_{0:T}}{\partial \mu}$$
+
+Moreau computes $\partial \hat{x}_{0:T}/\partial \mu$ by differentiating through the SOCP KKT conditions at each contact solve, rather than smoothing the friction cone or unrolling solver iterations.
+"""))
+
+# Cell 6: Data + simulators
 cells.append(code_cell('cell-05-simulators', r'''
 # --- Generate observed trajectories with mu_true ---
 n_obs = 8
